@@ -1,5 +1,9 @@
 import styled from "styled-components"
-export default function Cards(){}
+export default function FlashCards(){
+    return(
+    <div>a</div>
+    )
+}
 //   .container-botoes > button {
 //     width: 90px;
 //     font-family: 'Recursive';

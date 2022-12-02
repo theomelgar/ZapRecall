@@ -1,5 +1,9 @@
 import styled from "styled-components"
-export default function Result(){}
+export default function Result(){
+  return(
+    <Footer/>
+  )
+}
 const Footer = styled.div`
       width: 100%;
       min-height: 50px;
