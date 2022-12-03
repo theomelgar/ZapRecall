@@ -1,11 +1,15 @@
 import styled from "styled-components"
 import Footer from "./Footer"
 import FlashCards from "./FlashCards"
+import logo from "../assets/img/logo.png"
 
 export default function ZapMain(){
     return(
         <Zap>
-            <Logo></Logo>
+            <Logo>
+              <img src={logo}/>
+              <h1>ZapRecall</h1>
+            </Logo>
         <FlashCards></FlashCards>
         <Footer></Footer>
         </Zap>
