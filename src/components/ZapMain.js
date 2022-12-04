@@ -3,14 +3,16 @@ import Footer from "./Footer"
 import FlashCards from "./FlashCards"
 import logo from "../assets/img/logo.png"
 
-export default function ZapMain(){
+export default function ZapMain(props){
+  const {card} = props
+  console.log(props, "ZapMain")
     return(
         <Zap>
             <Logo>
               <img src={logo}/>
               <h1>ZapRecall</h1>
             </Logo>
-        <FlashCards></FlashCards>
+        <FlashCards card={card}></FlashCards>
         <Footer></Footer>
         </Zap>
     )

@@ -1,12 +1,10 @@
 import styled from "styled-components"
 import Card from "./Card"
-export default function FlashCards(){
+export default function FlashCards(props){
+  const {card} = props
     return(
     <Cards>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
+    {card.map((card) => <Card key={card.question} question={card.question} answer={card.answer}/>)}
     </Cards>
     )
 }
