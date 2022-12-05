@@ -50,23 +50,23 @@ export default function Card(props) {
         if (virado) {
             if (respondido) {
                 return (
-                    <CartaFechada color={resultado} feito={traco}>
-                        <p>
+                    <CartaFechada color={resultado} feito={traco} data-test="flashcard">
+                        <p data-test="flashcard-text">
                             Pergunta {index}
                         </p>
-                        <img src={icon} alt="icon" />
+                        <img src={icon} alt="icon" data-test="zap-icon"/>
                     </CartaFechada>
                 )
             }
             else {
                 return (
                     <CartaAberta>
-                        <p>{answer}</p>
+                        <p data-test="flashcard-text">{answer}</p>
                         <Botoes>
-                            <Vermelho
+                            <Vermelho data-test="no-btn"
                                 onClick={Verm}>Não lembrei</Vermelho>
-                            <Amarelo onClick={Amar}>Quase não lembrei</Amarelo>
-                            <Verde onClick={Verd}>Zap!</Verde>
+                            <Amarelo data-test="partial-btn" onClick={Amar}>Quase não lembrei</Amarelo>
+                            <Verde data-test="zap-btn" onClick={Verd}>Zap!</Verde>
                         </Botoes>
                     </CartaAberta>
                 )
@@ -74,9 +74,9 @@ export default function Card(props) {
         }
         else {
             return (
-                <CartaAberta>
-                    <p>{question}</p>
-                    <img src={virar} alt="virar" onClick={() => setVirado(true)}></img>
+                <CartaAberta data-test="flashcard">
+                    <p data-test="flashcard-text">{question}</p>
+                    <img src={virar} alt="virar" data-test="turn-btn" onClick={() => setVirado(true)}></img>
                 </CartaAberta>
             )
         }
@@ -88,11 +88,11 @@ export default function Card(props) {
     else {
         return (
             <>
-                <CartaFechada color={resultado} feito={traco}>
-                    <p>
+                <CartaFechada color={resultado} feito={traco} data-test="flashcard">
+                    <p data-test="flashcard-text">
                         Pergunta {index}
                     </p>
-                    <img src={seta} alt="seta" onClick={() => setSelecionado(true)} />
+                    <img src={seta} alt="seta" data-test="play-btn" onClick={() => setSelecionado(true)} />
                 </CartaFechada>
             </>
         )
