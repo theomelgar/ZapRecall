@@ -39,6 +39,7 @@ const CartaFechada = styled.div`
      display: flex;
      align-items: center;
      justify-content: space-between;
+img{cursor: pointer; }
 p {
      font-family: 'Recursive';
      font-style: normal;
@@ -49,9 +50,9 @@ p {
    }
 `
 const Botoes = styled.div`
-display: flex;
-flex-direction: wrap;
-gap: 7px;
+    display: flex;
+    flex-direction: wrap;
+    gap: 7px;
 `
 const CartaAberta = styled.div`
      width: 300px;
@@ -75,6 +76,7 @@ img{
      position: absolute;
      bottom: 10px;
      right: 10px;
+     cursor: pointer;   
    }
 button {
     width: 90px;
@@ -96,12 +98,21 @@ button {
 const Verde = styled.button`
     background: #2FBE34;
     border: 1px solid #2FBE34; 
+    &:hover{
+        cursor: pointer; 
+    }
 `
 const Amarelo = styled.button`
     background: #FF922E;
     border: 1px solid #FF922E; 
+    &:hover{
+        cursor: pointer; 
+    }
 `
 const Vermelho = styled.button`
     background: #FF3030;
     border: 1px solid #FF3030; 
+    &:hover{
+        cursor: pointer; 
+    }
 `
