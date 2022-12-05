@@ -5,31 +5,28 @@ import logo from "../assets/img/logo.png"
 import { useState } from "react"
 
 export default function ZapMain(props) {
-  const { card } = props
-  const [resultado, setResultado] = useState()
-  const [respondido, setRespondido] = useState(false)
-  const [selecionado, setSelecionado] = useState(false)
-  const [virado, setVirado] = useState(false)
-  const [conscluidos, setConcluidos] = useState(0)
-  const [inicio, setInicio] = useState(false)
-
   const cores = {
     VERDE: "#2FBE34",
     AMARELO: "#FF922E",
     VERMELHO: "#FF3030",
     CINZA: "#333333"
   }
+  const { card } = props
+  const [respondido, setRespondido] = useState(false)
+  const [selecionado, setSelecionado] = useState(false)
+  const [virado, setVirado] = useState(false)
+  const [concluidos, setConcluidos] = useState(0)
+  const [inicio, setInicio] = useState(false)
 
+  
   const conteudos = {
-    resultado, setResultado,
     respondido, setRespondido,
     selecionado, setSelecionado,
     virado, setVirado,
-    setConcluidos,
-    cores
+    concluidos,setConcluidos
   }
 
-  const conclusao = conscluidos 
+  const conclusao = concluidos 
 
   console.log(props, "ZapMain")
 
@@ -50,7 +47,7 @@ export default function ZapMain(props) {
         <img src={logo} alt="logo" />
         <h1>ZapRecall</h1>
       </Logo>
-      <FlashCards card={card} conteudos={conteudos}></FlashCards>
+      <FlashCards cores={cores} card={card} conteudos={conteudos}></FlashCards>
       <Footer card={card} conclusao={conclusao}></Footer>
     </Zap>
   )

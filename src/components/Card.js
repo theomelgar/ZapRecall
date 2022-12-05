@@ -1,11 +1,36 @@
 import styled from "styled-components"
 import seta from "../assets/img/seta_play.png"
 import virar from "../assets/img/seta_virar.png"
+import { useState } from "react"
+
 export default function Card(props) {
-    const {question,answer,index} = props
+    const {question,answer,index, conteudos,
+        cores} = props
+    const {
+        respondido, setRespondido,
+        selecionado, setSelecionado,
+        virado, setVirado,
+        concluidos,setConcluidos} = conteudos
+    const [traco, setTraco] = useState("none")
+    const [resultado , setResultado] = useState(cores.CINZA)
+    function Verm(){
+        setResultado(cores.VERMELHO)
+        setConcluidos(concluidos+1)
+        setTraco("line-through")
+    }
+    function Verd(){
+        setResultado(cores.VERDE)
+        setConcluidos(concluidos+1)
+        setTraco("line-through")
+    }
+    function Amar(){
+        setResultado(cores.AMARELO)
+        setConcluidos(concluidos+1)
+        setTraco("line-through")
+    }
     return (
         <>
-            <CartaFechada>
+            <CartaFechada color={resultado} feito={traco}>
                 <p>
                     Pergunta {index}
                 </p>
@@ -18,9 +43,10 @@ export default function Card(props) {
             <CartaAberta>
                 <p>{answer}</p>
                 <Botoes>
-                    <Vermelho>Não lembrei</Vermelho>
-                    <Amarelo>Quase não lembrei</Amarelo>
-                    <Verde>Zap!</Verde>
+                    <Vermelho 
+                    onClick={Verm}>Não lembrei</Vermelho>
+                    <Amarelo onClick={Amar}>Quase não lembrei</Amarelo>
+                    <Verde onClick={Verd}>Zap!</Verde>
                 </Botoes>
             </CartaAberta>
         </>
@@ -39,6 +65,7 @@ const CartaFechada = styled.div`
      display: flex;
      align-items: center;
      justify-content: space-between;
+     
 img{cursor: pointer; }
 p {
      font-family: 'Recursive';
@@ -46,7 +73,8 @@ p {
      font-weight: 700;
      font-size: 16px;
      line-height: 19px;
-     color: #333333;
+     color: ${resultado => resultado.color};
+     text-decoration: ${traco => traco.feito};
    }
 `
 const Botoes = styled.div`
