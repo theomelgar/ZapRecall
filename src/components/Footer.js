@@ -3,7 +3,7 @@ export default function Result(props){
   const {conclusao , card} = props
   console.log(conclusao)
   return(
-    <Footer>{conclusao}/{card.length} CONCLUÍDOS</Footer>
+    <Footer>{conclusao>=card.length? card.length : conclusao}/{card.length} CONCLUÍDOS</Footer>
   )
 }
 const Footer = styled.div`

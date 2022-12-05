@@ -6,51 +6,91 @@ import { useState } from "react"
 export default function Card(props) {
     const {question,answer,index, conteudos,
         cores} = props
-    const {
-        respondido, setRespondido,
-        selecionado, setSelecionado,
-        virado, setVirado,
-        concluidos,setConcluidos} = conteudos
+    const {concluidos,setConcluidos} = conteudos
+
     const [traco, setTraco] = useState("none")
+    const [selecionado, setSelecionado] = useState(false)
+    const [virado , setVirado] = useState(false)
+    const [respondido, setRespondido] = useState(false)
     const [resultado , setResultado] = useState(cores.CINZA)
+    
+    function abrir(){
+        setSelecionado(true)
+    }
+    function verso(){
+        setVirado(true)
+    }
+    function fechar(){
+        setRespondido(true)
+    }
     function Verm(){
         setResultado(cores.VERMELHO)
         setConcluidos(concluidos+1)
         setTraco("line-through")
+        fechar()
     }
     function Verd(){
         setResultado(cores.VERDE)
         setConcluidos(concluidos+1)
         setTraco("line-through")
+        fechar()
     }
     function Amar(){
         setResultado(cores.AMARELO)
         setConcluidos(concluidos+1)
         setTraco("line-through")
+        fechar()
     }
-    return (
+    if(selecionado){
+        if (virado){
+            if(respondido){
+                return(
+                    <CartaFechada color={resultado} feito={traco}>
+                        <p>
+                            Pergunta {index}
+                        </p>
+                        <img src={seta} alt="seta" />
+                    </CartaFechada>
+                )   
+            }
+            else{
+                return(
+                <CartaAberta>
+                    <p>{answer}</p>
+                    <Botoes>
+                        <Vermelho 
+                        onClick={Verm}>Não lembrei</Vermelho>
+                        <Amarelo onClick={Amar}>Quase não lembrei</Amarelo>
+                        <Verde onClick={Verd}>Zap!</Verde>
+                    </Botoes>
+                </CartaAberta>
+                )
+            }
+        }
+        else{
+            return(
+                <CartaAberta>
+                    <p>{question}</p>
+                    <img src={virar} alt="virar" onClick={()=> setVirado(true)}></img>
+                </CartaAberta>
+            )
+        }
+        
+    }
+        
+    
+    
+    else{return (
         <>
             <CartaFechada color={resultado} feito={traco}>
                 <p>
                     Pergunta {index}
                 </p>
-                <img src={seta} alt="seta" />
+                <img src={seta} alt="seta" onClick={()=> setSelecionado(true)}/>
             </CartaFechada>
-            <CartaAberta>
-                <p>{question}</p>
-                <img src={virar} alt="virar"></img>
-            </CartaAberta>
-            <CartaAberta>
-                <p>{answer}</p>
-                <Botoes>
-                    <Vermelho 
-                    onClick={Verm}>Não lembrei</Vermelho>
-                    <Amarelo onClick={Amar}>Quase não lembrei</Amarelo>
-                    <Verde onClick={Verd}>Zap!</Verde>
-                </Botoes>
-            </CartaAberta>
         </>
     )
+    }
     
 }
 
