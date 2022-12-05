@@ -1,97 +1,103 @@
 import styled from "styled-components"
 import seta from "../assets/img/seta_play.png"
 import virar from "../assets/img/seta_virar.png"
+import correto from "../assets/img/icone_certo.png"
+import errado from "../assets/img/icone_erro.png"
+import quase from "../assets/img/icone_quase.png"
+
 import { useState } from "react"
 
 export default function Card(props) {
-    const {question,answer,index, conteudos,
-        cores} = props
-    const {concluidos,setConcluidos} = conteudos
+    const { question, answer, index, conteudos,
+        cores } = props
+    const { concluidos, setConcluidos, ima, setIma } = conteudos
 
     const [traco, setTraco] = useState("none")
     const [selecionado, setSelecionado] = useState(false)
-    const [virado , setVirado] = useState(false)
+    const [virado, setVirado] = useState(false)
     const [respondido, setRespondido] = useState(false)
-    const [resultado , setResultado] = useState(cores.CINZA)
-    
-    function abrir(){
-        setSelecionado(true)
-    }
-    function verso(){
-        setVirado(true)
-    }
-    function fechar(){
+    const [resultado, setResultado] = useState(cores.CINZA)
+    const [icon, setIcon] = useState(seta)
+
+    function fechar() {
         setRespondido(true)
     }
-    function Verm(){
+    function Verm() {
         setResultado(cores.VERMELHO)
-        setConcluidos(concluidos+1)
+        setConcluidos(concluidos + 1)
         setTraco("line-through")
         fechar()
+        setIcon(errado)
+        setIma([...ima, errado])
     }
-    function Verd(){
+    function Verd() {
         setResultado(cores.VERDE)
-        setConcluidos(concluidos+1)
+        setConcluidos(concluidos + 1)
         setTraco("line-through")
         fechar()
+        setIcon(correto)
+        setIma([...ima, correto])
     }
-    function Amar(){
+    function Amar() {
         setResultado(cores.AMARELO)
-        setConcluidos(concluidos+1)
+        setConcluidos(concluidos + 1)
         setTraco("line-through")
         fechar()
+        setIcon(quase)
+        setIma([...ima, quase])
     }
-    if(selecionado){
-        if (virado){
-            if(respondido){
-                return(
+    if (selecionado) {
+        if (virado) {
+            if (respondido) {
+                return (
                     <CartaFechada color={resultado} feito={traco}>
                         <p>
                             Pergunta {index}
                         </p>
-                        <img src={seta} alt="seta" />
+                        <img src={icon} alt="icon" />
                     </CartaFechada>
-                )   
+                )
             }
-            else{
-                return(
-                <CartaAberta>
-                    <p>{answer}</p>
-                    <Botoes>
-                        <Vermelho 
-                        onClick={Verm}>Não lembrei</Vermelho>
-                        <Amarelo onClick={Amar}>Quase não lembrei</Amarelo>
-                        <Verde onClick={Verd}>Zap!</Verde>
-                    </Botoes>
-                </CartaAberta>
+            else {
+                return (
+                    <CartaAberta>
+                        <p>{answer}</p>
+                        <Botoes>
+                            <Vermelho
+                                onClick={Verm}>Não lembrei</Vermelho>
+                            <Amarelo onClick={Amar}>Quase não lembrei</Amarelo>
+                            <Verde onClick={Verd}>Zap!</Verde>
+                        </Botoes>
+                    </CartaAberta>
                 )
             }
         }
-        else{
-            return(
+        else {
+            return (
                 <CartaAberta>
                     <p>{question}</p>
-                    <img src={virar} alt="virar" onClick={()=> setVirado(true)}></img>
+                    <img src={virar} alt="virar" onClick={() => setVirado(true)}></img>
                 </CartaAberta>
             )
         }
-        
+
     }
-        
-    
-    
-    else{return (
-        <>
-            <CartaFechada color={resultado} feito={traco}>
-                <p>
-                    Pergunta {index}
-                </p>
-                <img src={seta} alt="seta" onClick={()=> setSelecionado(true)}/>
-            </CartaFechada>
-        </>
-    )
+
+
+
+    else {
+        return (
+            <>
+                <CartaFechada color={resultado} feito={traco}>
+                    <p>
+                        Pergunta {index}
+                    </p>
+                    <img src={seta} alt="seta" onClick={() => setSelecionado(true)} />
+                </CartaFechada>
+            </>
+        )
     }
-    
+
 }
 
 const CartaFechada = styled.div`

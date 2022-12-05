@@ -5,8 +5,6 @@ export default function FlashCards(props){
   const {card,conteudos,
     cores} = props
     
-  console.log(props)
-  console.log(cores)
     return(
     <Cards>
     {card.map((card,index) => <Card key={index} index={index+1} question={card.question} answer={card.answer} 

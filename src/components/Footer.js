@@ -1,9 +1,15 @@
 import styled from "styled-components"
+
 export default function Result(props){
-  const {conclusao , card} = props
-  console.log(conclusao)
+  const {conclusao , card,ima} = props  
+
   return(
-    <Footer>{conclusao>=card.length? card.length : conclusao}/{card.length} CONCLUÍDOS</Footer>
+    <Footer>
+      {conclusao>=card.length? card.length : conclusao}/{card.length} CONCLUÍDOS
+      <Resultado>
+        {ima.map((i)=> <img src={i} alt={i}/>)}
+      </Resultado>
+      </Footer>
   )
 }
 const Footer = styled.div`
@@ -29,4 +35,7 @@ const Footer = styled.div`
       justify-content: space-between;
       margin: 20px;
     }
+`
+const Resultado = styled.div`
+  display: flex;
 `

@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Footer from "./Footer"
 import FlashCards from "./FlashCards"
 import logo from "../assets/img/logo.png"
+
 import { useState } from "react"
 
 export default function ZapMain(props) {
@@ -17,19 +18,20 @@ export default function ZapMain(props) {
   const [virado, setVirado] = useState(false)
   const [concluidos, setConcluidos] = useState(0)
   const [inicio, setInicio] = useState(false)
+  const [ima, setIma] = useState([])
 
   
   const conteudos = {
     respondido, setRespondido,
     selecionado, setSelecionado,
     virado, setVirado,
-    concluidos,setConcluidos
+    concluidos,setConcluidos,
+    ima,setIma
   }
 
   const conclusao = concluidos 
-
-  console.log(props, "ZapMain")
-
+  console.log(ima)
+  
   if (inicio === false) {
     return (
       <ZapAntes>
@@ -48,7 +50,7 @@ export default function ZapMain(props) {
         <h1>ZapRecall</h1>
       </Logo>
       <FlashCards cores={cores} card={card} conteudos={conteudos}></FlashCards>
-      <Footer card={card} conclusao={conclusao}></Footer>
+      <Footer card={card} conclusao={conclusao} ima={ima}></Footer>
     </Zap>
   )
 }
