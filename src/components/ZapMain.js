@@ -39,7 +39,7 @@ export default function ZapMain(props) {
           <img src={logo} alt="logo" />
           <h1>ZapRecall</h1>
         </LogoAntes>
-        <Start onClick={() => setInicio(true)}>Iniciar Recall!</Start>
+        <Start data-test="start-btn" onClick={() => setInicio(true)}>Iniciar Recall!</Start>
       </ZapAntes>
     )
   }
