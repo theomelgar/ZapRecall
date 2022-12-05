@@ -2,12 +2,12 @@ import styled from "styled-components"
 import seta from "../assets/img/seta_play.png"
 import virar from "../assets/img/seta_virar.png"
 export default function Card(props) {
-    const {question,answer} = props
+    const {question,answer,index} = props
     return (
         <>
             <CartaFechada>
                 <p>
-                    Pergunta
+                    Pergunta {index}
                 </p>
                 <img src={seta} alt="seta" />
             </CartaFechada>

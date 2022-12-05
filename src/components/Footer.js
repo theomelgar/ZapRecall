@@ -1,7 +1,9 @@
 import styled from "styled-components"
-export default function Result(){
+export default function Result(props){
+  const {conclusao , card} = props
+  console.log(conclusao)
   return(
-    <Footer>0/4 CONCLUÍDOS</Footer>
+    <Footer>{conclusao}/{card.length} CONCLUÍDOS</Footer>
   )
 }
 const Footer = styled.div`

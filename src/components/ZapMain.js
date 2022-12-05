@@ -12,12 +12,14 @@ export default function ZapMain(props) {
   const [virado, setVirado] = useState(false)
   const [conscluidos, setConcluidos] = useState(0)
   const [inicio, setInicio] = useState(false)
+
   const cores = {
     VERDE: "#2FBE34",
     AMARELO: "#FF922E",
     VERMELHO: "#FF3030",
     CINZA: "#333333"
   }
+
   const conteudos = {
     resultado, setResultado,
     respondido, setRespondido,
@@ -26,7 +28,9 @@ export default function ZapMain(props) {
     setConcluidos,
     cores
   }
-  const conclusao = { conscluidos }
+
+  const conclusao = conscluidos 
+
   console.log(props, "ZapMain")
 
   if (inicio === false) {
@@ -47,7 +51,7 @@ export default function ZapMain(props) {
         <h1>ZapRecall</h1>
       </Logo>
       <FlashCards card={card} conteudos={conteudos}></FlashCards>
-      <Footer conclusao={conclusao}></Footer>
+      <Footer card={card} conclusao={conclusao}></Footer>
     </Zap>
   )
 }
