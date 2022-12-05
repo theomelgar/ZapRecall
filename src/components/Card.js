@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import seta from "../assets/img/seta_play.png"
 import virar from "../assets/img/seta_virar.png"
-import cards from "../mock"
 export default function Card(props) {
     const {question,answer} = props
     return (
@@ -10,11 +9,11 @@ export default function Card(props) {
                 <p>
                     Pergunta
                 </p>
-                <img src={seta} />
+                <img src={seta} alt="seta" />
             </CartaFechada>
             <CartaAberta>
                 <p>{question}</p>
-                <img src={virar}></img>
+                <img src={virar} alt="virar"></img>
             </CartaAberta>
             <CartaAberta>
                 <p>{answer}</p>
