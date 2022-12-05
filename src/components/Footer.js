@@ -60,7 +60,7 @@ const Footer = styled.div`
       font-size: 18px;
       color: #333333;
       padding: 10px;
-    
+      gap:10px;
     
     & > .container-botoes {
       display: flex;
