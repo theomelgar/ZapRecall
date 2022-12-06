@@ -38,7 +38,7 @@ export default function ZapMain(props) {
     setDeckNome("React")
   }
   function selecionarMuseu(){
-    setDeck(card) 
+    setDeck(museu) 
     setDeckNome("Museu")
   }
 
